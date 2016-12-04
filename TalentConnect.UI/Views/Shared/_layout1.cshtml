@@ -8,7 +8,7 @@
     <!-- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Work Scout</title>
+    <title>Talent Connect</title>
 
     <!-- Mobile Specific Metas
     ================================================== -->
@@ -37,7 +37,7 @@
 
                     <!-- Logo -->
                     <div id="logo">
-                        <h1><a href="index.html"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+                        <h1><a href="home"><img src="images/logo.png" alt="Talent Connect" width="196" height="41" /></a></h1>
                     </div>
 
                     <!-- Menu -->
@@ -90,6 +90,17 @@
             </div>
         </header>
         <div class="clearfix"></div>
+
+        <!-- Titlebar
+        ================================================== -->
+        <div id="titlebar" class="single">
+            <div class="container">
+
+                <div class="sixteen columns">
+                    @RenderSection("PageTitle", true)
+                </div>
+            </div>
+        </div>
 
 
         <!-- Content
@@ -157,8 +168,8 @@
                     <ul class="footer-links">
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="terms">Terms of Service</a></li>
+                        <li><a href="privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -202,6 +213,6 @@
     <script src="scripts/jquery.jpanelmenu.js"></script>
     <script src="scripts/stacktable.js"></script>
     <script src="scripts/headroom.min.js"></script>
-    
+
 </body>
 </html>
