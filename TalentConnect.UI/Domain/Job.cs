@@ -1,20 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace TalentConnect.UI.Domain
 {
-    public class Job
+    public class Job : IEntity
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required, MaxLength(128)]
         public string Title { get; set; }
+        [Required, MaxLength(int.MaxValue)]
         public string Description { get; set; }
-        public string Location { get; set; }
-        public string JobType { get; set; }
+        [Required, MaxLength(64)]
+        public string City { get; set; }
+        [Required, MaxLength(64)]
+        public string Province { get; set; }
+        [Required]
+        public JobTypes JobType { get; set; }
         public int YearsOfExperience { get; set; }
         public DateTime ExpiryDate { get; set; }
+        [Required]
         public bool IsActive { get; set; }
+        [Required]
         public DateTime CreatedDate { get; set; }
     }
 }

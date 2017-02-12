@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -136,11 +137,19 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrivacyController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
+    <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Domain\Job.cs" />
+    <Compile Include="Domain\JobTypes.cs" />
+    <Compile Include="Domain\Province.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\TalentConnectContext.cs" />
+    <Compile Include="Infrastructure\Context\DBInitializer.cs" />
+    <Compile Include="Infrastructure\Context\IDbContext.cs" />
+    <Compile Include="Infrastructure\Security\SaltedHash.cs" />
+    <Compile Include="Infrastructure\Context\TalentConnectContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +180,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\all-categories-photo.jpg" />
     <Content Include="images\avatar-placeholder.png" />
+    <Content Include="images\background.jpg" />
     <Content Include="images\banner-01.jpg" />
     <Content Include="images\banner-02.jpg" />
     <Content Include="images\banner-home-01.jpg" />
