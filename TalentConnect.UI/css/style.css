@@ -101,32 +101,32 @@ header.transparent {
 	top: 0;
 	left: 0;
 	width: 100%;
-    box-shadow: inset 0px -1px 0px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px -1px 0px 0px rgba(255,255,255,0.2);
 }
 
 body.boxed #wrapper { position: relative; }
 
 header.transparent .menu ul li a {
-    color: #fff;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    line-height: 19px;
+	color: #fff;
+	font-size: 13px;
+	letter-spacing: 0.5px;
+	line-height: 19px;
 }
 
 header.transparent .menu ul ul li a {
-    color: #959595;   
-    font-size: 14px;
-    letter-spacing: 0px;
+	color: #959595;   
+	font-size: 14px;
+	letter-spacing: 0px;
 }
 
 header.transparent ul.float-right li a {
-    background-color: rgba(255,255,255,0.1);
-    color: #fff;
+	background-color: rgba(255,255,255,0.1);
+	color: #fff;
 }
 
 header.transparent ul.float-right li a:hover {
-    background-color: rgba(255,255,255,0.2);
-    color: #fff;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
 }
 
 header.transparent .menu ul ul li a:hover { color: #fff; }
@@ -158,14 +158,14 @@ header.transparent #logo { border-bottom: none; }
 @media only screen and (max-width: 990px) {
 
 	header.transparent.alternative #navigation ul.float-right a {
-	    color: #fff;
-	    background: transparent;
+		color: #fff;
+		background: transparent;
 	}
 	header.transparent #navigation ul.float-right {
-	    right: -15px;
-	    top: 15px;
-	    position: absolute;
-	    text-align: right;
+		right: -15px;
+		top: 15px;
+		position: absolute;
+		text-align: right;
 	}
 	header.transparent a.menu-trigger { background: rgba(255,255,255,0.2); }
 	header.transparent { box-shadow: none; }
@@ -178,15 +178,15 @@ header.transparent #logo { border-bottom: none; }
 	
 	header.transparent #logo { padding-bottom: 0; }
 	header.transparent #navigation ul.float-right {
-	    right: -15px;
-	    top: 0;
-	    position: relative;
-	    text-align: center;
+		right: -15px;
+		top: 0;
+		position: relative;
+		text-align: center;
 	}
 
 	#banner.with-transparent-header .search-container {
-	    padding: 190px 0;
-	    margin-top: 35px;
+		padding: 190px 0;
+		margin-top: 35px;
 	}
 
 	#banner.with-transparent-header { max-height: 760px; }
@@ -216,8 +216,8 @@ header.transparent .menu ul ul li a:hover { color: #333; }
 .sticky-header.headroom--pinned.cloned,
 .sticky-header.headroom--unpinned.cloned,
 .sticky-header.headroom--top.cloned {
-    transform: translateY(-100%);
-    transition: all 0.25s ease-in-out;
+	transform: translateY(-100%);
+	transition: all 0.25s ease-in-out;
 }
 
 
@@ -241,7 +241,7 @@ header.transparent .menu ul ul li a:hover { color: #333; }
 	opacity: 1;
 	visibility: visible;
 	transition-delay: 0s;
-    transform: translateY(0%);
+	transform: translateY(0%);
 }
 
 .sticky-header.cloned .menu ul.float-right,
@@ -761,8 +761,8 @@ input.ico-02 { background: #fff url("../images/ico-02.png") no-repeat scroll 96%
 	background-color: #222;
 	padding: 95px 0;
 	overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: 50%;
+	background-repeat: no-repeat;
+	background-position: 50%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -772,7 +772,7 @@ input.ico-02 { background: #fff url("../images/ico-02.png") no-repeat scroll 96%
 #titlebar.photo-bg h2 {
 	font-size: 36px;
 	color: #fff;
-    line-height: 42px;
+	line-height: 42px;
 }
 
 #titlebar.photo-bg span a {
@@ -927,7 +927,7 @@ a.button.white {
 
 a.button.centered {
 	display: table;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 #titlebar.photo-bg a.button:hover {
@@ -1248,10 +1248,10 @@ table.manage-table td.action a:hover { color: #505050; }
 	background-color: rgba(0,0,0,0.3);
 	color: #fff;
 	-webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
 }
 
 #backtotop a:after {
@@ -1305,14 +1305,14 @@ table.manage-table td.action a:hover { color: #505050; }
 .pbs:hover { background-color: #f6f6f6; }
 
 mark, .mark {
-    background-color: #fcf8e3;
-    padding: .2em;
-    text-align: right;
-    font-size: 14px;
-    margin-top: -10px;
-    color: #8a803e;
-    position: relative;
-    top: -10px;
+	background-color: #fcf8e3;
+	padding: .2em;
+	text-align: right;
+	font-size: 14px;
+	margin-top: -10px;
+	color: #8a803e;
+	position: relative;
+	top: -10px;
 }
 
 /* ------------------------------------------------------------------- */
@@ -3011,9 +3011,9 @@ img.mfp-img {
 
 .resumes-list li,
 .job-list li {
-    background-color: #fff;
-    border-top: 1px solid #e0e0e0;
-    position: relative;
+	background-color: #fff;
+	border-top: 1px solid #e0e0e0;
+	position: relative;
 	z-index: 99;
 }
 
@@ -3027,12 +3027,12 @@ img.mfp-img {
 
 .resumes-list li:last-child,
 .job-list li:last-child {
-    border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
 } 
 
 .resumes-list li:nth-child(2n),
 .job-list li:nth-child(2n) {
-    background-color: #fbfbfb;
+	background-color: #fbfbfb;
 }
 
 .resumes-list li:hover,
@@ -4186,14 +4186,14 @@ a.post-img {
 a.post-img img { width: 100%; }
 
 a.post-img:before {
-    height: 100%;
-    width: 100%;
-    background-color: #000;
-    opacity: 0;
-    position: absolute;
-    display: block;
-    z-index: 99;
-    content: "";
+	height: 100%;
+	width: 100%;
+	background-color: #000;
+	opacity: 0;
+	position: absolute;
+	display: block;
+	z-index: 99;
+	content: "";
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out;
@@ -5538,9 +5538,9 @@ textarea.WYSIWYG { min-height: 300px; }
 }
 
 .form.with-line {
-    border-top: 1px solid #E0E0E0;
-    padding-top: 30px;
-    margin-bottom: 30px;
+	border-top: 1px solid #E0E0E0;
+	padding-top: 30px;
+	margin-bottom: 30px;
 }
 
 .form.boxed input,
@@ -6004,14 +6004,14 @@ label.upload-btn input[type="file"] { display: none; }
 	.search-container { padding: 120px 0; }
 
 	.job-list img {
-	    margin-left: 30px;
-	    width: 50px;
-	    height: 50px;
+		margin-left: 30px;
+		width: 50px;
+		height: 50px;
 	}
 	.resumes-list img {
-	    margin-left: 30px;
-	    width: 70px;
-	    height: 70px;
+		margin-left: 30px;
+		width: 70px;
+		height: 70px;
 	}
 
 	.resume-titlebar img {
@@ -6048,22 +6048,22 @@ label.upload-btn input[type="file"] { display: none; }
 
 	.caption h2 { font-size: 36px; }
 	.caption p {
-	    font-size: 20px;
-	    line-height: 30px;
+		font-size: 20px;
+		line-height: 30px;
 	}
 
 	#titlebar.photo-bg { padding: 75px 0; }
 
 	.app-content .buttons {
-	    left: 0;
-	    display: inline-block;
-	    top: 0;
+		left: 0;
+		display: inline-block;
+		top: 0;
 		-webkit-transform: none;
 		-moz-transform: none;
 		-ms-transform: none;
 		transform: none;
-	    position: relative;
-	    margin-top: 30px;
+		position: relative;
+		margin-top: 30px;
 	}
 
 	.alternative #navigation {
@@ -6107,9 +6107,9 @@ label.upload-btn input[type="file"] { display: none; }
 	#popular-categories li a { width: 100%; }
 
 	.resumes-list img, .job-list img {
-	    margin-left: 30px;
-	    width: 50px;
-	    height: 50px;
+		margin-left: 30px;
+		width: 50px;
+		height: 50px;
 	}
 	
 	.icon-box p { margin-bottom: 30px; }
@@ -6161,12 +6161,12 @@ label.upload-btn input[type="file"] { display: none; }
 
 	.caption h2 { font-size: 22px; }
 	.caption p {
-	    display: none;
+		display: none;
 	}
 
 	#titlebar .button {
-	    right: 0;
-	    position: relative;
+		right: 0;
+		position: relative;
 		 margin-top: 20px;
 		-webkit-transform: none;
 		-moz-transform: none;
@@ -6184,9 +6184,9 @@ label.upload-btn input[type="file"] { display: none; }
 	.resume-titlebar .resumes-list-content { margin-left: 120px; }
 
 	#titlebar .two-buttons .button {
-	    right: 0;
-	    position: relative;
-	    top: 0;
+		right: 0;
+		position: relative;
+		top: 0;
 		-webkit-transform: none;
 		-moz-transform: none;
 		-ms-transform: none;
@@ -6205,25 +6205,25 @@ label.upload-btn input[type="file"] { display: none; }
 	.categories-group h4 { margin-bottom: 30px; }
 
 	.app-content .buttons {
-	    left: 0;
-	    display: inline-block;
-	    top: 0;
+		left: 0;
+		display: inline-block;
+		top: 0;
 		-webkit-transform: none;
 		-moz-transform: none;
 		-ms-transform: none;
 		transform: none;
-	    position: relative;
-	    margin-top: 35px;
+		position: relative;
+		margin-top: 35px;
 	}
 
 	.app-footer ul {
-	    float: left;
-	    margin-top: 7px;
+		float: left;
+		margin-top: 7px;
 	}
 
 	.app-footer ul li {
-	    margin-right: 15px;
-	    margin-left: 0;
+		margin-right: 15px;
+		margin-left: 0;
 	}
 
 	.app-tabs .app-tab-content .select-grid:first-child {  margin-right: 0; }

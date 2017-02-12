@@ -22,7 +22,7 @@
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    @RenderSection("HeadScripts", false)
 </head>
 
 <body>
@@ -44,10 +44,10 @@
                     <nav id="navigation" class="menu">
                         <ul id="responsive">
                             <li>
-                                <a href="home" id="home" >Home</a>
+                                <a href="home" id="home-nav" >Home</a>
                             </li>
                             <li>
-                                <a href="candidates" id="candidates">For Candidates</a>
+                                <a href="candidates" id="candidates-nav">For Candidates</a>
                                 <!--ul>
                                     <li><a href="browse-jobs.html">Browse Jobs</a></li>
                                     <li><a href="browse-categories.html">Browse Categories</a></li>
@@ -58,7 +58,7 @@
                             </li>
 
                             <li>
-                                <a href="employers" id="employers" class="active">For Employers</a>
+                                <a href="employers" id="employers-nav">For Employers</a>
                                 <!--ul>
                                     <li><a href="add-job.html">Add Job</a></li>
                                     <li><a href="manage-jobs.html">Manage Jobs</a></li>
@@ -67,10 +67,10 @@
                                 </ul-->
                             </li>
                             <li>
-                                <a href="about" id="about">About</a>
+                                <a href="about" id="about-nav">About</a>
                             </li>
                             <li>
-                                <a href="contact" id="contact">Contact</a>
+                                <a href="contact" id="contact-nav">Contact</a>
                             </li>
                         </ul>
                         <!--ul class="float-right">
@@ -107,43 +107,6 @@
         <div class="container">
             @RenderBody()
         </div>
-
-
-        <!-- Testimonials -->
-        <div id="testimonials">
-            <!-- Slider -->
-            <div class="container">
-                <div class="sixteen columns">
-                    <div class="testimonials-slider">
-                        <ul class="slides">
-                            <li>
-                                <p>
-                                    I have already heard back about the internship I applied through Job Finder, that's the fastest job reply I've ever gotten and it's so much better than waiting weeks to hear back.
-                                    <span>Collis Ta’eed, Envato</span>
-                                </p>
-                            </li>
-
-                            <li>
-                                <p>
-                                    Nam eu eleifend nulla. Duis consectetur sit amet risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat. Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum.
-                                    <span>John Doe</span>
-                                </p>
-                            </li>
-
-                            <li>
-                                <p>
-                                    Maecenas congue sed massa et porttitor. Duis placerat commodo ex, ut faucibus est facilisis ac. Donec eleifend arcu sed sem posuere aliquet. Etiam lorem metus, suscipit vel tortor vitae.
-                                    <span>Tom Smith</span>
-                                </p>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
 
         <!-- Footer
         ================================================== -->
@@ -213,10 +176,14 @@
     <script src="scripts/jquery.jpanelmenu.js"></script>
     <script src="scripts/stacktable.js"></script>
     <script src="scripts/headroom.min.js"></script>
+    @RenderSection("Scripts", false)
     <script type="text/javascript">
         $(document).ready(function () {
             @RenderSection("OnReadyPageScript", false)
         });
+
+        
+
     </script>
 </body>
 </html>

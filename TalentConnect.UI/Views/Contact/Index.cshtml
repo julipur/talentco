@@ -1,8 +1,115 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
 @section PageTitle{
     <h2>Contact</h2>
+}
+
+<!-- Container -->
+<div class="container">
+    <div class="sixteen columns">
+
+        <h3 class="margin-bottom-20">Our Office</h3>
+
+        <!-- Google Maps -->
+        <section class="google-map-container">
+            <div id="googlemaps" class="google-map google-map-full"></div>
+        </section>
+        <!-- Google Maps / End -->
+
+    </div>
+</div>
+<!-- Container / End -->
+
+<div class="container">
+
+    <div class="eleven columns">
+
+        <h3 class="margin-bottom-15">Contact Form</h3>
+
+        <!-- Contact Form -->
+        <section id="contact" class="padding-right">
+
+            <!-- Success Message -->
+            <mark id="message"></mark>
+
+            <!-- Form -->
+            <form method="post" name="contactform" id="contactform">
+
+                <fieldset>
+
+                    <div>
+                        <label>Name:</label>
+                        <input name="name" type="text" id="name" />
+                    </div>
+
+                    <div>
+                        <label>Email: <span>*</span></label>
+                        <input name="email" type="email" id="email" />
+                    </div>
+
+                    <div>
+                        <label>Message: <span>*</span></label>
+                        <textarea name="comment" cols="40" rows="3" id="comment" spellcheck="true"></textarea>
+                    </div>
+
+                </fieldset>
+                <div id="result"></div>
+                <input type="submit" class="submit" id="submit" value="Send Message" />
+                <div class="clearfix"></div>
+                <div class="margin-bottom-40"></div>
+            </form>
+
+        </section>
+        <!-- Contact Form / End -->
+
+    </div>
+    <!-- Container / End -->
+    <!-- Sidebar
+    ================================================== -->
+    <div class="five columns">
+
+        <!-- Information -->
+        <h3 class="margin-bottom-10">Information</h3>
+        <div class="widget-box">
+            <ul class="contact-informations">
+                <li>7215 Goreway Drive</li>
+                <li>Suite 1A21 (Westwood Mall)</li>
+                <li>Mississauga, Ontario  L4T 0B4</li>
+            </ul>
+
+            <ul class="contact-informations second">
+                <!--li><i class="fa fa-phone"></i> <p>+48 880 440 110</p></li-->
+                <li><i class="fa fa-envelope"></i><p><a href="mailto:<a href=" mailto:team@talentconnect.co">team@talentconnect.co</a></p></li>
+                <li><i class="fa fa-globe"></i> <p>www.talentconnect.co</p></li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+<!-- Container / End -->
+@section HeadScripts{
+    <script type="text/javascript">
+
+        function initMap() {
+            var office = { lat: 43.717617, lng: -79.636748 };
+            var map = new google.maps.Map(document.getElementById('googlemaps'), {
+                zoom: 14,
+                center: office
+            });
+            var marker = new google.maps.Marker({
+                position: office,
+                map: map
+            });
+        }
+
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkYVLjcnFqVXvMpgSOJ8aaL2OwsH03920&callback=initMap"></script>
+
+}
+
+@section OnReadyPageScript{
+    $("#contact-nav").attr("id", "current");
 }
