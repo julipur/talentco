@@ -244,6 +244,7 @@
     <Content Include="scripts\custom.js" />
     <Content Include="scripts\headroom.min.js" />
     <Content Include="scripts\hoverIntent.js" />
+    <Content Include="App_Code\assets.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
