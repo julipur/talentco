@@ -7,6 +7,11 @@ using System.Web;
 
 namespace TalentConnect.UI.Domain
 {
+    public enum Role
+    {
+        Admin = 1,
+        Candidate,
+    }
     public class User : IEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,13 +26,15 @@ namespace TalentConnect.UI.Domain
         public string HashedPassword { get; set; }
         [Required, MaxLength(128)]
         public string PasswordSalt { get; set; }
+        public Role Role { get; set; }
 
         internal static User Add(
             string email, 
             string firstName, 
             string lastName,
             string hashedPassword, 
-            string passwordSalt)
+            string passwordSalt,
+            Role role)
         {
             return new User()
             {
@@ -35,7 +42,8 @@ namespace TalentConnect.UI.Domain
                 FirstName = firstName,
                 LastName = lastName,
                 HashedPassword = hashedPassword,
-                PasswordSalt = passwordSalt
+                PasswordSalt = passwordSalt,
+                Role = role
             };
         }
     }
