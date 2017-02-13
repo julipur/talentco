@@ -24,7 +24,9 @@ namespace TalentConnect.UI.Domain
         public int YearsOfExperience { get; set; }
         public DateTime ExpiryDate { get; set; }
         [Required]
-        public bool IsActive { get; set; }
+        public bool Active { get; set; }
+        [Required]
+        public bool Filled { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
     }

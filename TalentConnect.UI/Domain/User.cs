@@ -16,7 +16,7 @@ namespace TalentConnect.UI.Domain
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required, MaxLength(128)]
+        [Required, MaxLength(128), Index(IsUnique=true)]
         public string Email { get; set; }
         [Required, MaxLength(64)]
         public string FirstName { get; set; }
