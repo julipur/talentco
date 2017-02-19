@@ -32,7 +32,7 @@ namespace TalentConnect.UI.Infrastructure.Context
             hasher.GetHashAndSaltString("p@ssw0rd", out hashedPassword, out salt);
 
             context.Users.Add(User.Add("jabbar@talentconnect.co", "Abdul Jabbar", "Zaffar", hashedPassword, salt, Role.Admin));
-            context.Users.Add(User.Add("qudoos@talentconnect.co", "Abdul Qudoos", "Zaffar", hashedPassword, salt, Role.Admin));
+            context.Users.Add(User.Add("qudoos@talentconnect.co", "Abdul Qudoos", "Chaudhry", hashedPassword, salt, Role.Admin));
         }
 
         private List<Province> InitlializeProvinces()

@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="Infrastructure\Context\DBInitializer.cs" />
     <Compile Include="Infrastructure\Context\IDbContext.cs" />
+    <Compile Include="Infrastructure\Navigation.cs" />
     <Compile Include="Infrastructure\Security\SaltedHash.cs" />
     <Compile Include="Infrastructure\Context\TalentConnectContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
