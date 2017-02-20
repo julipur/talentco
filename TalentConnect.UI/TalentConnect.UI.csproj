@@ -130,6 +130,8 @@
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -141,7 +143,6 @@
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Domain\Job.cs" />
     <Compile Include="Domain\JobTypes.cs" />
-    <Compile Include="Domain\Province.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,7 +152,9 @@
     <Compile Include="Infrastructure\Navigation.cs" />
     <Compile Include="Infrastructure\Security\SaltedHash.cs" />
     <Compile Include="Infrastructure\Context\TalentConnectContext.cs" />
+    <Compile Include="Infrastructure\Province.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Request\AddJobRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +249,9 @@
     <Content Include="scripts\headroom.min.js" />
     <Content Include="scripts\hoverIntent.js" />
     <Content Include="App_Code\assets.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Jobs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Jobs\Add.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -275,14 +281,17 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_layout1.cshtml" />
+    <Content Include="Views\Shared\_public1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Jobs\ManageJobs.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Shared\_admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Models\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -303,7 +312,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Employers\Index.cshtml" />
     <None Include="Properties\PublishProfiles\hostgator.pubxml" />
-    <Content Include="Views\Shared\_layout2.cshtml" />
+    <Content Include="Views\Shared\_public2.cshtml" />
     <Content Include="Views\Terms\Index.cshtml" />
     <Content Include="Views\Privacy\Index.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />

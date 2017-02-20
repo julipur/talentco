@@ -25,7 +25,6 @@ namespace TalentConnect.UI.Infrastructure.Context
         }
 
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<Province> Provinces { get; set; }
         public DbSet<User> Users { get; set; }
 
         #region IDbContext Members

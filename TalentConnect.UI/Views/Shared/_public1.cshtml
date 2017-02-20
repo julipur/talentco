@@ -4,16 +4,15 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-
     <!-- Basic Page Needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Talent Connect</title>
+    <title>Talent Connect - @ViewBag.Title</title>
 
     <!-- Mobile Specific Metas
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    @assets.FavIcons()
     <!-- CSS
     ================================================== -->
     @assets.corecss()
@@ -21,7 +20,7 @@
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    @RenderSection("HeadScripts", false)
+
 </head>
 
 <body>
@@ -36,14 +35,14 @@
 
                     <!-- Logo -->
                     <div id="logo">
-                        <h1><a href="home"><img src="/images/logo.png" alt="Talent Connect" width="196" height="41" /></a></h1>
+                        <h1><a href="home"><img src="images/logo.png" alt="Talent Connect" width="196" height="41" /></a></h1>
                     </div>
 
                     <!-- Menu -->
                     <nav id="navigation" class="menu">
                         <ul id="responsive">
                             <li>
-                                <a href="home" id="home-nav" >Home</a>
+                                <a href="home" id="home-nav">Home</a>
                             </li>
                             <li>
                                 <a href="candidates" id="candidates-nav">For Candidates</a>
@@ -88,25 +87,42 @@
             </div>
         </header>
         <div class="clearfix"></div>
-
-        <!-- Titlebar
+        <!-- Banner
         ================================================== -->
-        <div id="titlebar" class="single">
+        <div id="banner" style="background-image: url(images/background.jpg)" class="parallax background" data-img-width="2000" data-img-height="1330" data-diff="400">
             <div class="container">
-
                 <div class="sixteen columns">
-                    @RenderSection("PageTitle", true)
+
+                    <div class="search-container">
+
+                        <!-- Form -->
+                        <h2>Find job</h2>
+                        <input type="text" class="ico-01" placeholder="job title or keywords" value="" />
+                        <!--input type="text" class="ico-02" placeholder="city, province or region" value="" /-->
+                        <button><i class="fa fa-search"></i></button>
+
+                        <!-- Browse Jobs -->
+                        <!---div class="browse-jobs">
+                            Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a>
+                        </div--->
+
+                        <!-- Announce -->
+                        <!--div class="announce">
+                            We’ve over <strong>15 000</strong> job offers for you!
+                        </div-->
+
+                    </div>
+
                 </div>
             </div>
         </div>
-
 
         <!-- Content
         ================================================== -->
         <div class="container">
             @RenderBody()
         </div>
-
+     
         <!-- Footer
         ================================================== -->
         <div class="margin-top-0"></div>
@@ -175,14 +191,10 @@
     <script src="scripts/jquery.jpanelmenu.js"></script>
     <script src="scripts/stacktable.js"></script>
     <script src="scripts/headroom.min.js"></script>
-    @RenderSection("Scripts", false)
     <script type="text/javascript">
         $(document).ready(function () {
             @RenderSection("OnReadyPageScript", false)
         });
-
-        
-
     </script>
 </body>
 </html>
