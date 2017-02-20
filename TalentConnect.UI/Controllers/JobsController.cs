@@ -13,7 +13,7 @@ namespace TalentConnect.UI.Controllers
             return View();
         }
 
-        [HttpGet]
+        [Route("manage-jobs"), HttpGet]
         public ActionResult ManageJobs()
         {
             return View();
