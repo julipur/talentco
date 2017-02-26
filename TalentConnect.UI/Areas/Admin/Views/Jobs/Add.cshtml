@@ -27,11 +27,6 @@
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "error" })
         </div>
         <div class="eight columns form">
-            @Html.LabelFor(model => model.SelectedJobType)
-            @Html.DropDownListFor(m => m.SelectedJobType, new SelectList(Model.JobTypes, "Key", "Value"), "Select Job Type", new { @class = "chosen-select-no-single" })
-            @Html.ValidationMessageFor(model => model.SelectedJobType, "", new { @class = "error" })
-        </div>
-        <div class="eight columns form">
             @Html.LabelFor(model => model.YearOfExperince)
             @Html.TextBoxFor(model => model.YearOfExperince, new { @class = "search-field", placeholder="Number of years required" })
         </div>
@@ -55,7 +50,12 @@
             @Html.LabelFor(model => model.SelectedProvince)
             @Html.DropDownListFor(m => m.SelectedProvince, new SelectList(Model.Provinces, "Abbreviation", "Name"), "Select Province", new { @class = "chosen-select-no-single" })
         </div>
-        
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.SelectedJobType)
+            @Html.DropDownListFor(m => m.SelectedJobType, new SelectList(Model.JobTypes, "Key", "Value"), "Select Job Type", new { @class = "chosen-select-no-single" })
+            @Html.ValidationMessageFor(model => model.SelectedJobType, "", new { @class = "error" })
+        </div>
+
         <div class="sixteen columns form">
             <label for="Description">Description</label>
             @Html.TextAreaFor(model => model.Description)

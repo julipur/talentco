@@ -34,7 +34,7 @@ namespace TalentConnect.UI.Models.Request
         [Display(Name = "Year of Experience")]
         public int? YearOfExperince { get; set; }
         public int? Hours { get; set; }
-        public int? Rate { get; set; }
+        public string Rate { get; set; }
 
         internal static AddJobViewModel CreateEmpty()
         {

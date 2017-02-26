@@ -21,14 +21,16 @@ namespace TalentConnect.UI.Domain
         public string Province { get; set; }
         [Required]
         public JobTypes JobType { get; set; }
-        public int YearsOfExperience { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public int? YearsOfExperience { get; set; }
+        public DateTime ClosingDate { get; set; }
         [Required]
         public bool FullTime { get; set; }
         [Required]
         public bool Active { get; set; }
         [Required]
         public bool Filled { get; set; }
+        public int? Hours { get; set; }
+        public string Rate { get; set; } 
         [Required]
         public DateTime CreatedDate { get; set; }
     }

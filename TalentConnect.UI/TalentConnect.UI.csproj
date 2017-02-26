@@ -140,6 +140,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PrivacyController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
+    <Compile Include="Domain\Commands\AddJobCommandHandler.cs" />
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Domain\Job.cs" />
     <Compile Include="Domain\JobTypes.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TalentConnect.UI.Domain.Commands;
 using TalentConnect.UI.Models.Request;
 
 namespace TalentConnect.UI.Areas.Admin.Controllers
@@ -21,11 +22,25 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
             return View(AddJobViewModel.CreateEmpty());
         }
 
-        [HttpPost]
-        public ActionResult Add(AddJobViewModel viewModel)
+        [HttpPost, ValidateInput(false)]
+        public ActionResult Add(AddJobViewModel vm)
         {
-            viewModel.InitializeLists();
-            return View(viewModel);
+            var commandHandler = new AddJobCommandHandler().HandleAsync(
+                new AddJobCommand()
+                {
+                    Title = vm.Title,
+                    Description = vm.Description,
+                    City = vm.City,
+                    Province = vm.SelectedProvince,
+                    JobType = vm.SelectedJobType,
+                    ClosingDate = vm.ClosingDate,
+                    YearOfExperince = vm.YearOfExperince,
+                    Hours = vm.Hours,
+                    Rate = vm.Rate
+                });
+
+            vm.InitializeLists();
+            return View(vm);
         }
     }
 }
