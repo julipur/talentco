@@ -18,13 +18,14 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View(AddJobRequest.CreateEmpty());
+            return View(AddJobViewModel.CreateEmpty());
         }
 
         [HttpPost]
-        public ActionResult Add(AddJobRequest request)
+        public ActionResult Add(AddJobViewModel viewModel)
         {
-            return View(request);
+            viewModel.InitializeLists();
+            return View(viewModel);
         }
     }
 }

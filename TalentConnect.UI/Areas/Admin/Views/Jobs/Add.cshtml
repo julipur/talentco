@@ -1,4 +1,4 @@
-﻿@model TalentConnect.UI.Models.Request.AddJobRequest
+﻿@model TalentConnect.UI.Models.Request.AddJobViewModel
 
 @{
     ViewBag.Title = "Add a Vacancy";
@@ -21,59 +21,75 @@
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "Please correct the errors", new { @class = "notification error" })
-        <div class="form">
+        <div class="eight columns form">
             @Html.LabelFor(model => model.Title)
             @Html.TextBoxFor(model => model.Title, new { @class="search-field", placeholder="Job Title"})
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "error" })
         </div>
-        <div class="form">
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.SelectedJobType)
+            @Html.DropDownListFor(m => m.SelectedJobType, new SelectList(Model.JobTypes, "Key", "Value"), "Select Job Type", new { @class = "chosen-select-no-single" })
+            @Html.ValidationMessageFor(model => model.SelectedJobType, "", new { @class = "error" })
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.YearOfExperince)
+            @Html.TextBoxFor(model => model.YearOfExperince, new { @class = "search-field", placeholder="Number of years required" })
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.Hours)
+            @Html.TextBoxFor(model => model.Hours, new { @class = "search-field", placeholder = "hours / week" })
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.Rate)
+            @Html.TextBoxFor(model => model.Rate, new { @class = "search-field", placeholder="hourly/per-diem/salary" })
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.ClosingDate)
+            @Html.TextBoxFor(model => model.ClosingDate, new { @class = "search-field", placeholder = "dd-mm-yyyy" })
+        </div>
+        <div class="eight columns form">
             @Html.LabelFor(model => model.City)
             @Html.TextBoxFor(model => model.City, new { @class = "search-field", placeholder = "City" })
         </div>
-        <div class="form">
+        <div class="eight columns form">
             @Html.LabelFor(model => model.SelectedProvince)
-            @Html.DropDownListFor(m => m.SelectedProvince, new SelectList(Model.Provinces, "Abbreviation", "Name"), " - Select Province")
+            @Html.DropDownListFor(m => m.SelectedProvince, new SelectList(Model.Provinces, "Abbreviation", "Name"), "Select Province", new { @class = "chosen-select-no-single" })
         </div>
-
         
-        <div class="form-group">
-            @Html.LabelFor(model => model.JobType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JobType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.YearOfExperince, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YearOfExperince, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YearOfExperince, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form">
+        <div class="sixteen columns form">
             <label for="Description">Description</label>
-            @Html.TextBoxFor(model => model.Description, new { @class = "search-field" })
+            @Html.TextAreaFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "error" })
         </div>
 
 
-        <div class="form-group">
+        <div class="sixteen columns form">
             <div class="col-md-offset-2 col-md-10">
+                <br />
                 <input type="submit" value="Save" class="btn btn-default" />
+                <br /><br />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@section scripts {
+    @assets.tinymce()
+}
+
+@section onready {
+    tinymce.init({
+          selector: 'textarea',
+          height: 300,
+          menubar: false,
+          plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code'
+          ],
+          toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+          content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+
+    $('.chosen-select-no-single').chosen({disable_search_threshold:10, width:"100%"});
+}

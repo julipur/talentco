@@ -154,7 +154,7 @@
     <Compile Include="Infrastructure\Context\TalentConnectContext.cs" />
     <Compile Include="Infrastructure\Province.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Request\AddJobRequest.cs" />
+    <Compile Include="Models\Request\AddJobViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +268,7 @@
     <Content Include="scripts\jquery.themepunch.showbizpro.min.js" />
     <Content Include="scripts\jquery.themepunch.tools.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\pickaday.js" />
     <Content Include="scripts\stacktable.js" />
     <Content Include="scripts\switcher.js" />
     <Content Include="scripts\waypoints.min.js" />

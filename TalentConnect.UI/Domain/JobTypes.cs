@@ -8,6 +8,8 @@ namespace TalentConnect.UI.Domain
     public enum JobTypes
     {
         Contract = 1, 
-        Employee
+        Employee,
+        Freelance,
+        Internship
     }
 }
