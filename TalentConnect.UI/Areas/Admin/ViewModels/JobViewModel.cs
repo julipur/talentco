@@ -6,10 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using TalentConnect.UI.Infrastructure;
 
-namespace TalentConnect.UI.Models.Request
+namespace TalentConnect.UI.Areas.Admin.ViewModels
 {
-    public class AddJobViewModel
+    public class JobViewModel
     {
+        public int? Id { get; set; }
         [Display(Name = "Title"), Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
 
@@ -32,13 +33,16 @@ namespace TalentConnect.UI.Models.Request
         public string ClosingDate { get; set; }
        
         [Display(Name = "Year of Experience")]
-        public int? YearOfExperince { get; set; }
+        public int? YearsOfExperince { get; set; }
         public int? Hours { get; set; }
         public string Rate { get; set; }
+        public bool Filled { get; set; }
+        public bool Active { get; set; }
+        public string CreatedDate { get; set; }
 
-        internal static AddJobViewModel CreateEmpty()
+        internal static JobViewModel CreateEmpty()
         {
-            var viewModel = new AddJobViewModel();
+            var viewModel = new JobViewModel();
             viewModel.InitializeLists();
             return viewModel;
         }

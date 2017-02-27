@@ -1,0 +1,18 @@
+﻿@model TalentConnect.UI.Areas.Admin.ViewModels.JobViewModel
+@{
+    ViewBag.Title = "Edit Job";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section PageTitle{
+    <h2><i class="fa fa-plus-circle"></i>&nbsp;Edit Job</h2>
+    <nav id="breadcrumbs">
+        <ul>
+            <li>You are here:</li>
+            <li><a href="#">Admin</a></li>
+            <li>Jobs</li>
+            <li>Edit Job</li>
+            <li>@Model.Title</li>
+        </ul>
+    </nav>
+}

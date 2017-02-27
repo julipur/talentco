@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TalentConnect.UI.Domain
+namespace TalentConnect.UI.Domain.Model
 {
     public interface IEntity
     {

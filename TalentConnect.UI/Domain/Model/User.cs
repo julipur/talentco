@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace TalentConnect.UI.Domain
+namespace TalentConnect.UI.Domain.Model
 {
     public enum Role
     {

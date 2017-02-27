@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Web;
-using TalentConnect.UI.Domain;
+using TalentConnect.UI.Domain.Model;
 
 namespace TalentConnect.UI.Infrastructure.Context
 {

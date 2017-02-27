@@ -9,51 +9,53 @@ namespace TalentConnect.UI.Infrastructure
     {
         public class About
         {
-            public string Controller = "about";
-            public string Index = "index";
+            public const string Controller = "about";
+            public const string Index = "index";
         }
 
         public class Candidates
         {
-            public string Controller = "candidates";
-            public string Index = "index";
+            public const string Controller = "candidates";
+            public const string Index = "index";
         }
 
         public class Contact
         {
-            public string Controller = "contact";
-            public string Index = "index";
+            public const string Controller = "contact";
+            public const string Index = "index";
         }
 
         public class Employers
         {
-            public string Controller = "employers";
-            public string Index = "index";
+            public const string Controller = "employers";
+            public const string Index = "index";
         }
 
         public class Home
         {
-            public string Controller = "home";
-            public string Index = "index";
+            public const string Controller = "home";
+            public const string Index = "index";
         }
 
         public class Jobs
         {
-            public string Controller = "jobs";
-            public string Index = "index";
-            public string ManageJobs = "manage";
+            public const string Area = "admin";
+            public const string Controller = "jobs";
+            public const string Index = "index";
+            public const string Add = "add";
+            public const string Edit = "edit";
         }
 
         public class Privacy
         {
-            public string Controller = "privacy";
-            public string Index = "index";
+            public const string Controller = "privacy";
+            public const string Index = "index";
         }
 
         public class Terms
         {
-            public string Controller = "terms";
-            public string Index = "index";
+            public const string Controller = "terms";
+            public const string Index = "index";
         }
     }
 }

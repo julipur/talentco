@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TalentConnect.UI.Areas.Admin.ViewModels;
 using TalentConnect.UI.Domain.Commands;
-using TalentConnect.UI.Models.Request;
+using TalentConnect.UI.Domain.Queries;
+using TalentConnect.UI.Infrastructure;
+
 
 namespace TalentConnect.UI.Areas.Admin.Controllers
 {
@@ -13,19 +17,40 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var dto = new GetJobs().ExecuteQuery();
+            var vm = new JobsViewModel()
+            {
+                Jobs = dto.Select(j => new JobViewModel()
+                {
+                    Id = j.Id,
+                    Title = j.Title,
+                    Description = j.Description,
+                    City = j.City,
+                    SelectedProvince = j.Province,
+                    SelectedJobType = j.JobType.ToString(),
+                    YearsOfExperince = j.YearsOfExperience,
+                    ClosingDate = j.ClosingDate.HasValue ?  j.ClosingDate.Value.ToString("MMM dd, yyyy") : string.Empty,
+                    Hours = j.Hours,
+                    Rate = j.Rate,
+                    Filled = j.Filled,
+                    Active = j.Active,
+                    CreatedDate = j.CreatedDate.ToString("MMM dd, yyyy")
+                })
+            };
+
+            return View(vm);
         }
 
         [HttpGet]
         public ActionResult Add()
         {
-            return View(AddJobViewModel.CreateEmpty());
+            return View(JobViewModel.CreateEmpty());
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Add(AddJobViewModel vm)
+        public async Task<ActionResult> Add(JobViewModel vm)
         {
-            var commandHandler = new AddJobCommandHandler().HandleAsync(
+            var id = await new AddJobCommandHandler().HandleAsync(
                 new AddJobCommand()
                 {
                     Title = vm.Title,
@@ -34,12 +59,28 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
                     Province = vm.SelectedProvince,
                     JobType = vm.SelectedJobType,
                     ClosingDate = vm.ClosingDate,
-                    YearOfExperince = vm.YearOfExperince,
+                    YearOfExperince = vm.YearsOfExperince,
                     Hours = vm.Hours,
                     Rate = vm.Rate
-                });
+                }).ConfigureAwait(false);
+
+            if (id > 0)
+            {
+                return RedirectToAction(Navigation.Jobs.Edit, Navigation.Jobs.Controller, new { id = id });
+            }
 
             vm.InitializeLists();
+            return View(vm);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var dto = new GetJobById().ExecuteQuery(id);
+            var vm = new JobViewModel()
+            {
+                Id = dto.Id,
+                Title = dto.Title
+            };
             return View(vm);
         }
     }

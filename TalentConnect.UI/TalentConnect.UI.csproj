@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\JobsViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -141,10 +142,12 @@
     <Compile Include="Controllers\PrivacyController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Domain\Commands\AddJobCommandHandler.cs" />
-    <Compile Include="Domain\IEntity.cs" />
-    <Compile Include="Domain\Job.cs" />
-    <Compile Include="Domain\JobTypes.cs" />
-    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Model\IEntity.cs" />
+    <Compile Include="Domain\Model\Job.cs" />
+    <Compile Include="Domain\Model\JobTypes.cs" />
+    <Compile Include="Domain\Model\User.cs" />
+    <Compile Include="Domain\Queries\GetJobById.cs" />
+    <Compile Include="Domain\Queries\GetJobs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,7 +158,7 @@
     <Compile Include="Infrastructure\Context\TalentConnectContext.cs" />
     <Compile Include="Infrastructure\Province.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Request\AddJobViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\JobViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +256,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Jobs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Jobs\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Jobs\Edit.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -291,9 +295,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Models\Response\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

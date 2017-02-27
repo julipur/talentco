@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace TalentConnect.UI.Domain
+namespace TalentConnect.UI.Domain.Model
 {
     public class Job : IEntity
     {
@@ -22,15 +22,14 @@ namespace TalentConnect.UI.Domain
         [Required]
         public JobTypes JobType { get; set; }
         public int? YearsOfExperience { get; set; }
-        public DateTime ClosingDate { get; set; }
+        public DateTime? ClosingDate { get; set; }
         [Required]
-        public bool FullTime { get; set; }
+        public int? Hours { get; set; }
+        public string Rate { get; set; }
         [Required]
         public bool Active { get; set; }
         [Required]
         public bool Filled { get; set; }
-        public int? Hours { get; set; }
-        public string Rate { get; set; } 
         [Required]
         public DateTime CreatedDate { get; set; }
     }

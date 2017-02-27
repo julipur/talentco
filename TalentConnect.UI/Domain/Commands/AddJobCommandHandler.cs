@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using TalentConnect.UI.Domain.Model;
 using TalentConnect.UI.Infrastructure.Context;
 
 namespace TalentConnect.UI.Domain.Commands
@@ -21,27 +22,38 @@ namespace TalentConnect.UI.Domain.Commands
     }
     public class AddJobCommandHandler
     {
-        public async Task HandleAsync(AddJobCommand command)
+        public async Task<int> HandleAsync(AddJobCommand command)
         {
-            using (var context = new TalentConnectContext())
+            DateTime closingDate, createdDate;
+            createdDate = DateTime.Now;
+            if (DateTime.TryParse(command.ClosingDate, out closingDate))
             {
-                Job job = new Job()
+                using (var context = new TalentConnectContext())
                 {
-                    Title = command.Title,
-                    Description = command.Description,
-                    City = command.City,
-                    Province = command.Province,
-                    JobType = (JobTypes)Enum.Parse(typeof(JobTypes), command.JobType, true),
-                    //ClosingDate = new DateTime(command.ClosingDate),
-                    YearsOfExperience = command.YearOfExperince,
-                    Hours = command.Hours,
-                    Rate = command.Rate
-                };
+                    var job = new Job()
+                    {
+                        Title = command.Title,
+                        Description = command.Description,
+                        City = command.City,
+                        Province = command.Province,
+                        JobType = (JobTypes)Enum.Parse(typeof(JobTypes), command.JobType, true),
+                        ClosingDate = closingDate,
+                        YearsOfExperience = command.YearOfExperince,
+                        Hours = command.Hours,
+                        Rate = command.Rate,
+                        Active = (createdDate < closingDate),
+                        Filled = false,
 
-                context.Jobs.Add(job);
-                await context.SaveChangesAsync().ConfigureAwait(false);
+                        CreatedDate = createdDate
+                    };
+
+                    context.Jobs.Add(job);
+                    await context.SaveChangesAsync().ConfigureAwait(false);
+                    return job.Id;
+                }
             }
 
+            return 0;
         } 
     }
 }

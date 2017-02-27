@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using TalentConnect.UI.Domain;
+using TalentConnect.UI.Domain.Model;
 using TalentConnect.UI.Infrastructure.Security;
 
 namespace TalentConnect.UI.Infrastructure.Context
