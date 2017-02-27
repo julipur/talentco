@@ -301,3 +301,5 @@ __pycache__/
 
 ### VisualStudio Patch ###
 build/
+
+Web.Release.config
