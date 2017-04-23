@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -22,34 +24,39 @@ namespace TalentConnect.UI.Domain.Commands
     }
     public class AddJobCommandHandler
     {
-        public async Task<int> HandleAsync(AddJobCommand command)
+        private string _sqlCommand = @"INSERT INTO Jobs
+                                       (Title, Description, City, Province, JobType, YearsOfExperience, ClosingDate, Hours, Rate, Active, Filled, CreatedDate)
+                                 VALUES(@Title, @Description, @City, @Province, @JobType, @YearsOfExperience, @ClosingDate, @Hours, @Rate, @Active, @Filled, @CreatedDate)";
+
+        public string ConnectionString
         {
-            DateTime closingDate, createdDate;
-            createdDate = DateTime.Now;
-            if (DateTime.TryParse(command.ClosingDate, out closingDate))
+            get
             {
-                using (var context = new TalentConnectContext())
+                return ConfigurationManager.ConnectionStrings["TalentConnect"].ToString();
+            }
+        }
+        public async Task<int> HandleAsync(AddJobCommand command)
+        {            
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(_sqlCommand))
                 {
-                    var job = new Job()
-                    {
-                        Title = command.Title,
-                        Description = command.Description,
-                        City = command.City,
-                        Province = command.Province,
-                        JobType = (JobTypes)Enum.Parse(typeof(JobTypes), command.JobType, true),
-                        ClosingDate = closingDate,
-                        YearsOfExperience = command.YearOfExperince,
-                        Hours = command.Hours,
-                        Rate = command.Rate,
-                        Active = (createdDate < closingDate),
-                        Filled = false,
+                    cmd.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar) { Value = command.Title });
+                    cmd.Parameters.Add(new SqlParameter("@Description", System.Data.SqlDbType.NVarChar) { Value = command.Description });
+                    cmd.Parameters.Add(new SqlParameter("@City", System.Data.SqlDbType.NVarChar) { Value = command.City });
+                    cmd.Parameters.Add(new SqlParameter("@Province", System.Data.SqlDbType.NVarChar) { Value = command.Province});
+                    cmd.Parameters.Add(new SqlParameter("@JobType", System.Data.SqlDbType.Int) { Value = 1 });
+                    cmd.Parameters.Add(new SqlParameter("@YearsOfExperience", System.Data.SqlDbType.Int) { Value = command.YearOfExperince });
+                    cmd.Parameters.Add(new SqlParameter("@ClosingDate", System.Data.SqlDbType.DateTime) { Value = command.ClosingDate });
+                    cmd.Parameters.Add(new SqlParameter("@Hours", System.Data.SqlDbType.Int) { Value = command.Hours });
+                    cmd.Parameters.Add(new SqlParameter("@Rate", System.Data.SqlDbType.NVarChar) { Value = command.Rate });
+                    cmd.Parameters.Add(new SqlParameter("@Active", System.Data.SqlDbType.Bit) { Value = true });
+                    cmd.Parameters.Add(new SqlParameter("@Filled", System.Data.SqlDbType.Bit) { Value = false });
+                    cmd.Parameters.Add(new SqlParameter("@CreatedDate", System.Data.SqlDbType.Date) { Value = DateTime.Now });
 
-                        CreatedDate = createdDate
-                    };
-
-                    context.Jobs.Add(job);
-                    await context.SaveChangesAsync().ConfigureAwait(false);
-                    return job.Id;
+                    conn.Open();
+                    cmd.Connection = conn;
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
 
