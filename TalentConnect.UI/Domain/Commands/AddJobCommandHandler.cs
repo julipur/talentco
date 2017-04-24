@@ -25,7 +25,8 @@ namespace TalentConnect.UI.Domain.Commands
     public class AddJobCommandHandler
     {
         private string _sqlCommand = @"INSERT INTO Jobs
-                                       (Title, Description, City, Province, JobType, YearsOfExperience, ClosingDate, Hours, Rate, Active, Filled, CreatedDate)
+                                (Title, Description, City, Province, JobType, YearsOfExperience, ClosingDate, Hours, Rate, Active, Filled, CreatedDate)
+                                OUTPUT INSERTED.Id
                                  VALUES(@Title, @Description, @City, @Province, @JobType, @YearsOfExperience, @ClosingDate, @Hours, @Rate, @Active, @Filled, @CreatedDate)";
 
         public string ConnectionString
@@ -37,7 +38,7 @@ namespace TalentConnect.UI.Domain.Commands
         }
         public async Task<int> HandleAsync(AddJobCommand command)
         {            
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(_sqlCommand))
                 {
@@ -54,13 +55,11 @@ namespace TalentConnect.UI.Domain.Commands
                     cmd.Parameters.Add(new SqlParameter("@Filled", System.Data.SqlDbType.Bit) { Value = false });
                     cmd.Parameters.Add(new SqlParameter("@CreatedDate", System.Data.SqlDbType.Date) { Value = DateTime.Now });
 
-                    conn.Open();
-                    cmd.Connection = conn;
-                    await cmd.ExecuteNonQueryAsync();
+                    connection.Open();
+                    cmd.Connection = connection;
+                    return (int)(await cmd.ExecuteScalarAsync().ConfigureAwait(false));
                 }
             }
-
-            return 0;
         } 
     }
 }
