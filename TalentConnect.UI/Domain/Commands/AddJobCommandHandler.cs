@@ -46,7 +46,7 @@ namespace TalentConnect.UI.Domain.Commands
                     cmd.Parameters.Add(new SqlParameter("@Description", System.Data.SqlDbType.NVarChar) { Value = command.Description });
                     cmd.Parameters.Add(new SqlParameter("@City", System.Data.SqlDbType.NVarChar) { Value = command.City });
                     cmd.Parameters.Add(new SqlParameter("@Province", System.Data.SqlDbType.NVarChar) { Value = command.Province});
-                    cmd.Parameters.Add(new SqlParameter("@JobType", System.Data.SqlDbType.Int) { Value = 1 });
+                    cmd.Parameters.Add(new SqlParameter("@JobType", System.Data.SqlDbType.NVarChar) { Value = command.JobType });
                     cmd.Parameters.Add(new SqlParameter("@YearsOfExperience", System.Data.SqlDbType.Int) { Value = command.YearOfExperince });
                     cmd.Parameters.Add(new SqlParameter("@ClosingDate", System.Data.SqlDbType.DateTime) { Value = command.ClosingDate });
                     cmd.Parameters.Add(new SqlParameter("@Hours", System.Data.SqlDbType.Int) { Value = command.Hours });

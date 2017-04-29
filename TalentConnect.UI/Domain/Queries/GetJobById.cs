@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using TalentConnect.UI.Infrastructure.Context;
@@ -24,28 +26,68 @@ namespace TalentConnect.UI.Domain.Queries
     }
     public class GetJobById
     {
+        private string _sqlCommand = @"SELECT 
+                                    Id
+                                    ,Title
+                                    ,Description
+                                    ,City
+                                    ,Province
+                                    ,JobType
+                                    ,YearsOfExperience
+                                    ,ClosingDate
+                                    ,Hours
+                                    ,Rate
+                                    ,Filled
+                                    ,Active
+                                    ,CreatedDate FROM Jobs
+                                    WHERE Id = @Id";
+
+
+        public string ConnectionString
+        {
+            get
+            {
+                return ConfigurationManager.ConnectionStrings["TalentConnect"].ToString();
+            }
+        }
+
         public GetJobDto ExecuteQuery(int id)
         {
-            using (var context = new TalentConnectContext())
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                var job =  context.Jobs.SingleOrDefault(u => u.Id == id);
-                return new GetJobDto()
+                using (SqlCommand cmd = new SqlCommand(_sqlCommand))
                 {
-                    Id = job.Id,
-                    Title = job.Title,
-                    Description = job.Description,
-                    City = job.City,
-                    Province = job.Province,
-                    JobType = job.JobType.ToString(),
-                    YearsOfExperience = job.YearsOfExperience,
-                    ClosingDate = job.ClosingDate,
-                    Hours = job.Hours,
-                    Rate = job.Rate,
-                    Filled = job.Filled,
-                    Active = job.Active,
-                    CreatedDate = job.CreatedDate
-                };
+                    cmd.Parameters.Add(new SqlParameter("@Id", System.Data.SqlDbType.Int) { Value = id });
+                    connection.Open();
+                    cmd.Connection = connection;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null && reader.HasRows)
+                        {
+                            reader.Read();
+
+                            return new GetJobDto()
+                            {
+                                Id = reader.GetInt32(0),
+                                Title = reader.GetString(1),
+                                Description = reader.GetString(2),
+                                City = reader.GetString(3),
+                                Province = reader.GetString(4),
+                                JobType = reader.GetString(5),
+                                YearsOfExperience = reader.GetInt32(6),
+                                ClosingDate = reader.GetDateTime(7),
+                                Hours = reader.GetInt32(8),
+                                Rate = reader.GetString(9),
+                                Filled = reader.GetBoolean(10),
+                                Active = reader.GetBoolean(11),
+                                CreatedDate = reader.GetDateTime(12)
+                            };
+
+                        }
+                    }
+                } 
             }
+            return null;
         }
     }
 }

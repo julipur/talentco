@@ -73,14 +73,30 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
             return View(vm);
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var dto = new GetJobById().ExecuteQuery(id);
+            
             var vm = new JobViewModel()
             {
                 Id = dto.Id,
-                Title = dto.Title
+                Title = dto.Title,
+                Description = dto.Description,
+                City = dto.City,
+                SelectedProvince = dto.Province,
+                SelectedJobType = dto.JobType,
+                YearsOfExperince = dto.YearsOfExperience,
+                ClosingDate = dto.ClosingDate.HasValue ? dto.ClosingDate.Value.ToString("dd-mm-yyyy") : string.Empty,
+                Hours = dto.Hours,
+                Rate = dto.Rate,
+                Active = dto.Active,
+                Filled = dto.Filled,
+                
+                
             };
+
+            vm.InitializeLists();
             return View(vm);
         }
     }
