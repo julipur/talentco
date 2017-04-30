@@ -1,4 +1,5 @@
-﻿@model TalentConnect.UI.Areas.Admin.ViewModels.JobViewModel
+﻿@using TalentConnect.UI.Infrastructure;
+@model TalentConnect.UI.Areas.Admin.ViewModels.JobViewModel
 @{
     ViewBag.Title = "Edit Job";
     Layout = "~/Views/Shared/_admin.cshtml";
@@ -10,7 +11,7 @@
         <ul>
             <li>You are here:</li>
             <li><a href="#">Admin</a></li>
-            <li>Jobs</li>
+            <li><a href="/@Navigation.Jobs.Area/@Navigation.Jobs.Controller/@Navigation.Jobs.Index">Jobs</a></li>
             <li>Edit Job</li>
             <li>@Model.Title</li>
         </ul>
@@ -56,6 +57,19 @@
             @Html.LabelFor(model => model.SelectedJobType)
             @Html.DropDownListFor(m => m.SelectedJobType, new SelectList(Model.JobTypes, "Key", "Value"), "Select Job Type", new { @class = "chosen-select-no-single" })
             @Html.ValidationMessageFor(model => model.SelectedJobType, "", new { @class = "error" })
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.Filled)
+            @Html.CheckBoxFor(model => model.Filled)
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.Active)
+            @Html.CheckBoxFor(model => model.Active)
+        </div>
+        <div class="sixteen columns form">
+            @Html.LabelFor(model => model.ShortDescription)
+            @Html.TextBoxFor(model => model.ShortDescription, new { @class = "search-field", placeholder = "Short Description" })
+            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "error" })
         </div>
         <div class="sixteen columns form">
             <label for="Description">Description</label>

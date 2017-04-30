@@ -55,6 +55,11 @@
             @Html.ValidationMessageFor(model => model.SelectedJobType, "", new { @class = "error" })
         </div>
         <div class="sixteen columns form">
+            @Html.LabelFor(model => model.ShortDescription)
+            @Html.TextBoxFor(model => model.ShortDescription, new { @class = "search-field", placeholder = "Short Description" })
+            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "error" })
+        </div>
+        <div class="sixteen columns form">
             <label for="Description">Description</label>
             @Html.TextAreaFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "error" })

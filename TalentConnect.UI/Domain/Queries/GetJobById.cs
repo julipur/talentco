@@ -12,6 +12,7 @@ namespace TalentConnect.UI.Domain.Queries
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string ShortDescription { get; set; }
         public string Description { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
@@ -24,11 +25,12 @@ namespace TalentConnect.UI.Domain.Queries
         public bool Active { get; set; }
         public DateTime CreatedDate { get; set; }
     }
-    public class GetJobById
+    public class GetJobById : BaseQuery
     {
         private string _sqlCommand = @"SELECT 
                                     Id
                                     ,Title
+                                    ,ShortDescription
                                     ,Description
                                     ,City
                                     ,Province
@@ -42,14 +44,6 @@ namespace TalentConnect.UI.Domain.Queries
                                     ,CreatedDate FROM Jobs
                                     WHERE Id = @Id";
 
-
-        public string ConnectionString
-        {
-            get
-            {
-                return ConfigurationManager.ConnectionStrings["TalentConnect"].ToString();
-            }
-        }
 
         public GetJobDto ExecuteQuery(int id)
         {
@@ -70,17 +64,18 @@ namespace TalentConnect.UI.Domain.Queries
                             {
                                 Id = reader.GetInt32(0),
                                 Title = reader.GetString(1),
-                                Description = reader.GetString(2),
-                                City = reader.GetString(3),
-                                Province = reader.GetString(4),
-                                JobType = reader.GetString(5),
-                                YearsOfExperience = reader.GetInt32(6),
-                                ClosingDate = reader.GetDateTime(7),
-                                Hours = reader.GetInt32(8),
-                                Rate = reader.GetString(9),
-                                Filled = reader.GetBoolean(10),
-                                Active = reader.GetBoolean(11),
-                                CreatedDate = reader.GetDateTime(12)
+                                ShortDescription = reader.GetString(2),
+                                Description = reader.GetString(3),
+                                City = reader.GetString(4),
+                                Province = reader.GetString(5),
+                                JobType = reader.GetString(6),
+                                YearsOfExperience = reader.GetInt32(7),
+                                ClosingDate = reader.GetDateTime(8),
+                                Hours = reader.GetInt32(9),
+                                Rate = reader.GetString(10),
+                                Filled = reader.GetBoolean(11),
+                                Active = reader.GetBoolean(12),
+                                CreatedDate = reader.GetDateTime(13)
                             };
 
                         }

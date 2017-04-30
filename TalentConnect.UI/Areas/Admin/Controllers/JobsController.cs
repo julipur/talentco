@@ -24,6 +24,7 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
                 {
                     Id = j.Id,
                     Title = j.Title,
+                    ShortDescription = j.ShortDescription,
                     Description = j.Description,
                     City = j.City,
                     SelectedProvince = j.Province,
@@ -54,6 +55,7 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
                 new AddJobCommand()
                 {
                     Title = vm.Title,
+                    ShortDescription= vm.ShortDescription,
                     Description = vm.Description,
                     City = vm.City,
                     Province = vm.SelectedProvince,
@@ -82,19 +84,46 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
             {
                 Id = dto.Id,
                 Title = dto.Title,
+                ShortDescription = dto.ShortDescription,
                 Description = dto.Description,
                 City = dto.City,
                 SelectedProvince = dto.Province,
                 SelectedJobType = dto.JobType,
                 YearsOfExperince = dto.YearsOfExperience,
-                ClosingDate = dto.ClosingDate.HasValue ? dto.ClosingDate.Value.ToString("dd-mm-yyyy") : string.Empty,
+                ClosingDate = dto.ClosingDate.HasValue ? dto.ClosingDate.Value.ToString("dd-MM-yyyy") : string.Empty,
                 Hours = dto.Hours,
                 Rate = dto.Rate,
                 Active = dto.Active,
                 Filled = dto.Filled,
                 
-                
             };
+
+            vm.InitializeLists();
+            return View(vm);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public async Task<ActionResult> Edit(int id, JobViewModel vm )
+        {
+            var dto = new GetJobById().ExecuteQuery(id);
+
+            await new UpdateJobCommandHandler().HandleAsync(
+                new UpdateJobCommand()
+                {
+                    Id = id,
+                    Title = vm.Title,
+                    ShortDescription = vm.ShortDescription,
+                    Description = vm.Description,
+                    City = vm.City,
+                    Province = vm.SelectedProvince,
+                    JobType = vm.SelectedJobType,
+                    ClosingDate = vm.ClosingDate,
+                    YearOfExperince = vm.YearsOfExperince,
+                    Hours = vm.Hours,
+                    Rate = vm.Rate,
+                    Filled = vm.Filled,
+                    Active = vm.Active
+                }).ConfigureAwait(false);
 
             vm.InitializeLists();
             return View(vm);

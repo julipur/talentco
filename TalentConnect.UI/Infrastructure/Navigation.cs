@@ -13,9 +13,9 @@ namespace TalentConnect.UI.Infrastructure
             public const string Index = "index";
         }
 
-        public class Candidates
+        public class Vacancies
         {
-            public const string Controller = "candidates";
+            public const string Controller = "vacancies";
             public const string Index = "index";
         }
 

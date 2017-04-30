@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using TalentConnect.UI.Infrastructure.Context;
 
 namespace TalentConnect.UI.Domain.Queries
 {
-    public class GetJobsDto
+    public class GetActiveVacancyDto
     {
-        public IEnumerable<GetJobDto> Jobs { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ShortDescription { get; set; }
+        public string Description { get; set; }
+        public string City { get; set; }
+        public string Province { get; set; }
+        public string JobType { get; set; }
+        public int? YearsOfExperience { get; set; }
+        public DateTime? ClosingDate { get; set; }
+        public int? Hours { get; set; }
+        public string Rate { get; set; }
     }
 
-    public class GetJobs :  BaseQuery
+    public class GetActiveVacancies : BaseQuery
     {
         private string _sqlCommand = @"SELECT 
                                     Id
@@ -27,15 +35,11 @@ namespace TalentConnect.UI.Domain.Queries
                                     ,ClosingDate
                                     ,Hours
                                     ,Rate
-                                    ,Filled
-                                    ,Active
-                                    ,CreatedDate FROM Jobs";
+                                    ,CreatedDate FROM Jobs where Active = 1";
 
-
-        
-        public IEnumerable<GetJobDto> ExecuteQuery()
+        public IEnumerable<GetActiveVacancyDto> ExecuteQuery()
         {
-            var list = new List<GetJobDto>();
+            var list = new List<GetActiveVacancyDto>();
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -49,7 +53,7 @@ namespace TalentConnect.UI.Domain.Queries
                         {
                             while (reader.Read())
                             {
-                                list.Add(new GetJobDto()
+                                list.Add(new GetActiveVacancyDto()
                                 {
                                     Id = reader.GetInt32(0),
                                     Title = reader.GetString(1),
@@ -61,10 +65,7 @@ namespace TalentConnect.UI.Domain.Queries
                                     YearsOfExperience = reader.GetInt32(7),
                                     ClosingDate = reader.GetDateTime(8),
                                     Hours = reader.GetInt32(9),
-                                    Rate = reader.GetString(10),
-                                    Filled = reader.GetBoolean(11),
-                                    Active = reader.GetBoolean(12),
-                                    CreatedDate = reader.GetDateTime(13)
+                                    Rate = reader.GetString(10)
                                 });
                             }
                         }

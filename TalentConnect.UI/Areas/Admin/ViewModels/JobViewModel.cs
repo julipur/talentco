@@ -13,6 +13,8 @@ namespace TalentConnect.UI.Areas.Admin.ViewModels
         public int? Id { get; set; }
         [Display(Name = "Title"), Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
+        [Display(Name = "Short Description"), Required(ErrorMessage = "Short Description is required.")]
+        public string ShortDescription { get; set; }
 
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
