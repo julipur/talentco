@@ -36,6 +36,12 @@ namespace TalentConnect.UI.Controllers
             return View(vm);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
        
     }
 }

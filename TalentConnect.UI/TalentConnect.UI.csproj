@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
     <Compile Include="Areas\Admin\ViewModels\JobsViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmployersController.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Domain\Queries\GetActiveVacancies.cs" />
     <Compile Include="Domain\Queries\GetJobById.cs" />
     <Compile Include="Domain\Queries\GetJobs.cs" />
+    <Compile Include="Domain\Queries\Login.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +166,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Areas\Admin\ViewModels\JobViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\LogOnViewModel.cs" />
     <Compile Include="ViewModels\VacanciesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +299,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Vacancies\Index.cshtml" />
     <Content Include="Views\Shared\_admin.cshtml" />
+    <Content Include="Views\Account\Logon.cshtml" />
+    <Content Include="Views\Vacancies\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

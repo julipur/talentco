@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using TalentConnect.UI.Infrastructure.Context;
 
@@ -33,7 +34,7 @@ namespace TalentConnect.UI.Domain.Queries
 
 
         
-        public IEnumerable<GetJobDto> ExecuteQuery()
+        public async Task<IEnumerable<GetJobDto>> ExecuteQuery()
         {
             var list = new List<GetJobDto>();
 
@@ -43,7 +44,7 @@ namespace TalentConnect.UI.Domain.Queries
                 {
                     connection.Open();
                     command.Connection = connection;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync().ConfigureAwait(false))
                     {
                         if (reader != null && reader.HasRows)
                         {

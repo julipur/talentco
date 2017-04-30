@@ -57,7 +57,9 @@ namespace TalentConnect.UI.Areas.Admin.ViewModels
                                 { "Contract", "Contract" },
                                 { "Employee", "Employee" },
                                 { "Freelance", "Freelance" },
-                                { "Internship", "Internship" }
+                                { "Internship", "Internship" },
+                                { "FullTime", "Full-Time" },
+                                { "PartTime", "Part-Time" }
                             };
         }
     }

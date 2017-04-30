@@ -12,11 +12,17 @@ namespace TalentConnect.UI.Infrastructure
             public const string Controller = "about";
             public const string Index = "index";
         }
-
+        public class Account
+        {
+            public const string Controller = "account";
+            public const string Logon = "logon";
+            public const string Register = "register";
+        }
         public class Vacancies
         {
             public const string Controller = "vacancies";
             public const string Index = "index";
+            public const string Edit = "edit";
         }
 
         public class Contact

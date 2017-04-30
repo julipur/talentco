@@ -27,10 +27,9 @@ namespace TalentConnect.UI.Domain.Commands
     {
         private string _sqlCommand = @"INSERT INTO Jobs
                                 (Title, ShortDescription, Description, City, Province, JobType, YearsOfExperience, ClosingDate, Hours, Rate, Active, Filled, CreatedDate)
-                                OUTPUT INSERTED.Id
                                  VALUES(@Title, @ShortDescription, @Description, @City, @Province, @JobType, @YearsOfExperience, @ClosingDate, @Hours, @Rate, @Active, @Filled, @CreatedDate)";
 
-        public async Task<int> HandleAsync(AddJobCommand command)
+        public async Task HandleAsync(AddJobCommand command)
         {            
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -52,7 +51,7 @@ namespace TalentConnect.UI.Domain.Commands
 
                     connection.Open();
                     cmd.Connection = connection;
-                    return (int)(await cmd.ExecuteScalarAsync().ConfigureAwait(false));
+                    await cmd.ExecuteNonQueryAsync().ConfigureAwait(false);
                 }
             }
         } 

@@ -12,7 +12,7 @@
     @foreach (var vacancy in Model.Vacancies)
     {
     <li>
-        <a href="job-page.html">
+        <a href="/@Navigation.Vacancies.Controller/@Navigation.Vacancies.Edit/@vacancy.Id">
             <img src="images/job-list-logo-01.png" alt="">
             <div class="job-list-content">
                 <h4>@vacancy.Title <span class="full-time">Full-Time</span></h4>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using TalentConnect.UI.Infrastructure;
+<!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
@@ -42,40 +43,22 @@
                     <nav id="navigation" class="menu">
                         <ul id="responsive">
                             <li>
-                                <a href="home" id="home-nav">Home</a>
+                                @Html.ActionLink("Home", Navigation.Home.Index, Navigation.Home.Controller, new { }, new { id = "home-nav" })
                             </li>
                             <li>
-                                <a href="vacancies" id="candidates-nav">For Candidates</a>
-                                <!--ul>
-                                    <li><a href="browse-jobs.html">Browse Jobs</a></li>
-                                    <li><a href="browse-categories.html">Browse Categories</a></li>
-                                    <li><a href="add-resume.html">Add Resume</a></li>
-                                    <li><a href="manage-resumes.html">Manage Resumes</a></li>
-                                    <li><a href="job-alerts.html">Job Alerts</a></li>
-                                </ul-->
-                            </li>
-
-                            <li>
-                                <a href="employers" id="employers-nav">For Employers</a>
-                                <!--ul>
-                                    <li><a href="add-job.html">Add Job</a></li>
-                                    <li><a href="manage-jobs.html">Manage Jobs</a></li>
-                                    <li><a href="manage-applications.html">Manage Applications</a></li>
-                                    <li><a href="browse-resumes.html">Browse Resumes</a></li>
-                                </ul-->
+                                @Html.ActionLink("Jobs", Navigation.Vacancies.Index, Navigation.Vacancies.Controller, new { }, new { id = "candidates-nav" })
                             </li>
                             <li>
-                                <a href="about" id="about-nav">About</a>
+                                @Html.ActionLink("About", Navigation.About.Index, Navigation.About.Controller, new { }, new { id = "about-nav" })
                             </li>
                             <li>
-                                <a href="contact" id="contact-nav">Contact</a>
+                                @Html.ActionLink("Contact", Navigation.Contact.Index, Navigation.Contact.Controller, new { }, new { id = "contact-nav" })
                             </li>
                         </ul>
-                        <!--ul class="float-right">
-                            <li><a href="my-account.html#tab2"><i class="fa fa-user"></i> Sign Up</a></li>
-                            <li><a href="my-account.html"><i class="fa fa-lock"></i> Log In</a></li>
-                        </ul-->
-
+                        <ul class="float-right">
+                            <li><a href="@Navigation.Account.Controller/@Navigation.Account.Register"><i class="fa fa-user"></i> Sign Up</a></li>
+                            <li><a href="@Navigation.Account.Controller/@Navigation.Account.Logon"><i class="fa fa-lock"></i> Log In</a></li>
+                        </ul>
                     </nav>
 
                     <!-- Navigation -->
@@ -105,7 +88,6 @@
                         <!---div class="browse-jobs">
                             Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a>
                         </div--->
-
                         <!-- Announce -->
                         <!--div class="announce">
                             We’ve over <strong>15 000</strong> job offers for you!
@@ -122,7 +104,7 @@
         <div class="container">
             @RenderBody()
         </div>
-     
+
         <!-- Footer
         ================================================== -->
         <div class="margin-top-0"></div>

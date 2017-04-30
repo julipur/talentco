@@ -12,12 +12,15 @@ using TalentConnect.UI.Infrastructure;
 
 namespace TalentConnect.UI.Areas.Admin.Controllers
 {
+    [Authorize]
     public class JobsController : Controller
     {
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var dto = new GetJobs().ExecuteQuery();
+            var query = new GetJobs();
+            var dto = await query.ExecuteQuery().ConfigureAwait(false);
+
             var vm = new JobsViewModel()
             {
                 Jobs = dto.Select(j => new JobViewModel()
@@ -51,7 +54,7 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         public async Task<ActionResult> Add(JobViewModel vm)
         {
-            var id = await new AddJobCommandHandler().HandleAsync(
+            await new AddJobCommandHandler().HandleAsync(
                 new AddJobCommand()
                 {
                     Title = vm.Title,
@@ -66,11 +69,8 @@ namespace TalentConnect.UI.Areas.Admin.Controllers
                     Rate = vm.Rate
                 }).ConfigureAwait(false);
 
-            if (id > 0)
-            {
-                return RedirectToAction(Navigation.Jobs.Edit, Navigation.Jobs.Controller, new { id = id });
-            }
-
+            return RedirectToAction(Navigation.Jobs.Index, Navigation.Jobs.Controller);
+            
             vm.InitializeLists();
             return View(vm);
         }

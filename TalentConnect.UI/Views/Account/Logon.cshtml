@@ -1,0 +1,33 @@
+﻿@using TalentConnect.UI.Infrastructure;
+@model TalentConnect.UI.ViewModels.LogOnViewModel
+@{
+    ViewBag.Title = "Logon";
+}
+
+@section PageTitle{
+    <h2>Log In</h2>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal five columns">
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "search-field", placeholder = "Email" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error" })
+        </div>
+        <div class="eight columns form">
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password, new { @class = "search-field", placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "error" })
+        </div>
+        <div class="sixteen columns form">
+            <div class="col-md-offset-2 col-md-10">
+                <br />
+                <input type="submit" value="Login" class="btn btn-default" />
+                <br /><br />
+            </div>
+        </div>
+    </div>
+}
