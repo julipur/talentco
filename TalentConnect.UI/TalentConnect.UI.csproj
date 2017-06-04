@@ -143,6 +143,7 @@
     <Compile Include="Controllers\PrivacyController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Domain\Commands\AddJobCommandHandler.cs" />
+    <Compile Include="Domain\Commands\AddUserCommandHandler.cs" />
     <Compile Include="Domain\Commands\BaseCommandHandler.cs" />
     <Compile Include="Domain\Commands\UpdateJobCommandHandler.cs" />
     <Compile Include="Domain\Model\IEntity.cs" />
@@ -300,7 +301,7 @@
     <Content Include="Views\Vacancies\Index.cshtml" />
     <Content Include="Views\Shared\_admin.cshtml" />
     <Content Include="Views\Account\Logon.cshtml" />
-    <Content Include="Views\Vacancies\Edit.cshtml" />
+    <Content Include="Views\Vacancies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

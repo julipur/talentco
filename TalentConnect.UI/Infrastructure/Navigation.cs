@@ -22,7 +22,7 @@ namespace TalentConnect.UI.Infrastructure
         {
             public const string Controller = "vacancies";
             public const string Index = "index";
-            public const string Edit = "edit";
+            public const string Details = "details";
         }
 
         public class Contact

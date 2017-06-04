@@ -37,7 +37,7 @@ namespace TalentConnect.UI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Details(int id)
         {
             return View();
         }
