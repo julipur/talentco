@@ -16,7 +16,7 @@ namespace TalentConnect.UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            //DatabaseConfig.ConfigureDatabase();
+            new DatabaseConfig().ConfigureDatabase();
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }

@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using TalentConnect.UI.Infrastructure.Context;
 
 namespace TalentConnect.UI.Domain.Queries
 {

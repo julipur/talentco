@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using TalentConnect.UI.Domain.Queries;
 
 namespace TalentConnect.UI.Domain.Commands
 {
@@ -25,6 +26,9 @@ namespace TalentConnect.UI.Domain.Commands
 
         public async Task HandleAsync(AddUserCommand command)
         {
+            if (await new UserExistsByEmail().ExecuteQuery(command.Email))
+                return;
+
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(_sqlCommand))

@@ -12,4 +12,10 @@ namespace TalentConnect.UI.Domain.Model
         Freelance,
         Internship
     }
+
+    public enum Role
+    {
+        Admin = 1,
+        User
+    }
 }

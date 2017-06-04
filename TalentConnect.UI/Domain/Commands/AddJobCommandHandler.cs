@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using TalentConnect.UI.Domain.Model;
-using TalentConnect.UI.Infrastructure.Context;
 
 namespace TalentConnect.UI.Domain.Commands
 {

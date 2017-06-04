@@ -7,11 +7,22 @@ using System.Web.Mvc;
 using TalentConnect.UI.Domain.Queries;
 using TalentConnect.UI.Infrastructure.Security;
 using TalentConnect.UI.ViewModels;
+using TalentConnect.UI.Infrastructure.Authentication;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
 
 namespace TalentConnect.UI.Controllers
 {
     public class AccountController : Controller
     {
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         // GET: Account
         public ActionResult Logon()
         {
@@ -21,12 +32,13 @@ namespace TalentConnect.UI.Controllers
         [HttpPost]
         public async Task<ActionResult> Logon(LogOnViewModel vm)
         {
-            string hashedPassword, salt;
-            var hasher = new SaltedHash();
-            hasher.GetHashAndSaltString(vm.Password, out hashedPassword, out salt);
+            var result = await new GetCredentialsByEmail().ExecuteQuery(vm.Email);
+            var authenticated = result != null && new SaltedHash().VerifyHashString(vm.Password, result.HashedPassword, result.PasswordSalt);
 
-            var query = new Login();
-            var authenticated = await query.ExecuteQuery(vm.Email, hashedPassword).ConfigureAwait(false);
+            if (authenticated)
+            {
+                AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, IdentityFactory.GetIdentity(vm.Email, result.Role));
+            }
 
             return View(vm);
         }
