@@ -55,10 +55,10 @@
                                 @Html.ActionLink("Contact", Navigation.Contact.Index, Navigation.Contact.Controller, new { }, new { id = "contact-nav" })
                             </li>
                         </ul>
-                        <ul class="float-right">
+                       <!--- <ul class="float-right">
                             <li><a href="@Navigation.Account.Controller/@Navigation.Account.Register"><i class="fa fa-user"></i> Sign Up</a></li>
                             <li><a href="@Navigation.Account.Controller/@Navigation.Account.Logon"><i class="fa fa-lock"></i> Log In</a></li>
-                        </ul>
+                        </ul> -->
                     </nav>
 
                     <!-- Navigation -->
@@ -73,30 +73,30 @@
         <!-- Banner
         ================================================== -->
         <div id="banner" style="background-image: url(images/background.jpg)" class="parallax background" data-img-width="2000" data-img-height="1330" data-diff="400">
-            <div class="container">
-                <div class="sixteen columns">
+            <div class="fullwidthbanner-container">
+                <div class="fullwidthbanner">
+                    <ul>
 
-                    <div class="search-container">
+                        <!-- Slide 1 -->
+                        <li data-fstransition="fade" data-transition="fade" data-slotamount="10" data-masterspeed="300">
 
-                        <!-- Form -->
-                        <h2>Find job</h2>
-                        <input type="text" class="ico-01" placeholder="job title or keywords" value="" />
-                        <!--input type="text" class="ico-02" placeholder="city, province or region" value="" /-->
-                        <button><i class="fa fa-search"></i></button>
+                            <div class="caption title sfb" data-x="center" data-y="195" data-speed="400" data-start="800" data-easing="easeOutExpo">
+                                <h2>Hire great employees. Period.</h2>
+                            </div>
 
-                        <!-- Browse Jobs -->
-                        <!---div class="browse-jobs">
-                            Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a>
-                        </div--->
-                        <!-- Announce -->
-                        <!--div class="announce">
-                            We’ve over <strong>15 000</strong> job offers for you!
-                        </div-->
+                            <div class="caption text align-center sfb" data-x="center" data-y="270" data-speed="400" data-start="1200" data-easing="easeOutExpo">
+                                <p>At Talentconnect we connect the best talent, matched to your exact needs.</p>
+                            </div>
 
-                    </div>
+                            <div class="caption sfb" data-x="center" data-y="400" data-speed="400" data-start="1600" data-easing="easeOutExpo">
+                                <a href="/contact" class="slider-button">Get in touch</a>
+                            </div>
+                        </li>
 
+                    </ul>
                 </div>
             </div>
+
         </div>
 
         <!-- Content
