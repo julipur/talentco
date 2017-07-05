@@ -17,18 +17,19 @@ IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[U
 	[HashedPassword] [nvarchar](128) NOT NULL,
 	[PasswordSalt] [nvarchar](128) NOT NULL,
 	[Role] [int] NOT NULL,
-	CONSTRAINT [UNQ_Email] UNIQUE(Email),
-	CONSTRAINT [PK_dbo.Users] PRIMARY KEY CLUSTERED 
-	(
-		[Id] ASC
-	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-	) ON [PRIMARY]
+ CONSTRAINT [PK_dbo.Users] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 GO
 
 IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Jobs]') AND type in (N'U'))
 	CREATE TABLE [dbo].[Jobs](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
 		[Title] [nvarchar](128) NOT NULL,
+		[ShortDescription] [nvarchar](256) NOT NULL,
 		[Description] [nvarchar](max) NOT NULL,
 		[City] [nvarchar](64) NOT NULL,
 		[Province] [nvarchar](64) NOT NULL,
