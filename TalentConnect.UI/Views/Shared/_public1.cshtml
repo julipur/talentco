@@ -43,20 +43,20 @@
                     <nav id="navigation" class="menu">
                         <ul id="responsive">
                             <li>
-                                @Html.ActionLink("Home", Navigation.Home.Index, Navigation.Home.Controller, new { }, new { id = "home-nav" })
+                                <a href="@Navigation.Home.Controller" >Home</a>
                             </li>
                             <li>
-                                @Html.ActionLink("Jobs", Navigation.Vacancies.Index, Navigation.Vacancies.Controller, new { }, new { id = "candidates-nav" })
+                                <a href="@Navigation.Vacancies.Controller">Vacancies</a>
                             </li>
                             <li>
-                                @Html.ActionLink("About", Navigation.About.Index, Navigation.About.Controller, new { }, new { id = "about-nav" })
+                                <a href="@Navigation.About.Controller">About</a>
                             </li>
                             <li>
-                                @Html.ActionLink("Contact", Navigation.Contact.Index, Navigation.Contact.Controller, new { }, new { id = "contact-nav" })
+                                <a href="@Navigation.Contact.Controller">Contact</a>
                             </li>
                         </ul>
                        <!--- <ul class="float-right">
-                            <li><a href="@Navigation.Account.Controller/@Navigation.Account.Register"><i class="fa fa-user"></i> Sign Up</a></li>
+                            <li><a href="c@Navigation.Account.Register"><i class="fa fa-user"></i> Sign Up</a></li>
                             <li><a href="@Navigation.Account.Controller/@Navigation.Account.Logon"><i class="fa fa-lock"></i> Log In</a></li>
                         </ul> -->
                     </nav>

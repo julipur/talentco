@@ -261,6 +261,7 @@
     <Content Include="Areas\Admin\Views\Jobs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Jobs\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Jobs\Edit.cshtml" />
+    <None Include="Properties\PublishProfiles\hg.pubxml" />
     <None Include="Properties\PublishProfiles\tc.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
